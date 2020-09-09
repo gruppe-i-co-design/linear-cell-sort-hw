@@ -29,11 +29,9 @@ begin
     cells_clr <= '0';
     in_cnt_inc <= '0';
     mux_cnt_inc <= '0';
+
 	case cur is
 		when idle =>
-		    in_cnt_clr <= '1';
-		    mux_cnt_clr <= '1';
-		    cells_clr <= '1';
 			if enable = '1' then 
 			    nxt <= reading;
 			end if;
@@ -45,6 +43,9 @@ begin
 			end if;
         when outputting =>
             if comp = '1' then 
+				in_cnt_clr <= '1';
+				mux_cnt_clr <= '1';
+				cells_clr <= '1';
                 nxt <= idle;
             else 
                 mux_cnt_inc <= '1';

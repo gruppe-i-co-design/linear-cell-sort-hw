@@ -16,11 +16,10 @@ generic(
         );
   Port ( 
         prev_cell_data, new_data : in std_logic_vector((DATA_LEN - 1) downto 0);
-        prev_cell_state : in t_state;
+        prev_cell_full : in std_logic;
         prev_cell_pushing : in std_logic;
         clk, rst, clr, enable : in std_logic;
-        state : out t_state;
-        pushing : out std_logic;
+        pushing, is_full : out std_logic;
         data : out std_logic_vector((DATA_LEN - 1) downto 0)
         );
 end top_cell;
@@ -46,27 +45,32 @@ begin
     end if;
 end process; 
 
-process(cur, enable, clr, prev_cell_state, prev_cell_pushing, comp)
+process(cur, enable, clr, prev_cell_full, prev_cell_pushing, comp)
 begin
 
     nxt <= cur;
     load <= '0';
     data_mux <= '0';
     pushing <= '0';
+    is_full <= '0';
  
     case cur is
         when empty =>
-            if prev_cell_pushing = '1' then
+			if enable /= '1' then
+            elsif prev_cell_pushing = '1' then
                 data_mux <= '0';
                 load <= '1';
                 nxt <= full;
-            elsif prev_cell_state = full then
+            elsif prev_cell_full = '1' then
                 data_mux <= '1';
                 load <= '1';
                 nxt <= full;
             end if;
         when full =>
-            if prev_cell_pushing = '1' then
+            is_full <= '1';
+
+			if enable /= '1' then
+            elsif prev_cell_pushing = '1' then
                 data_mux <= '0';
                 load <= '1';
                 pushing <= '1';
@@ -78,7 +82,6 @@ begin
     end case;
 end process;
 
-state <= cur;
 data <= reg_out;
 
 comparator : entity work.comparator
