@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Sep  9 09:17:42 2020
+# Process ID: 15756
+# Current directory: C:/Users/m_rah/Desktop/assignments/assigment_2/linear_cell_sort
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11408 C:\Users\m_rah\Desktop\assignments\assigment_2\linear_cell_sort\linear_cell_sort.xpr
+# Log file: C:/Users/m_rah/Desktop/assignments/assigment_2/linear_cell_sort/vivado.log
+# Journal file: C:/Users/m_rah/Desktop/assignments/assigment_2/linear_cell_sort\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/m_rah/Desktop/assignments/assigment_2/linear_cell_sort/linear_cell_sort.xpr
+update_compile_order -fileset sources_1
