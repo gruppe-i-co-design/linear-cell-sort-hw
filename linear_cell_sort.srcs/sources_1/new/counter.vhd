@@ -27,5 +27,8 @@ END PROCESS;
 
 nxt <= (others => '0') when clr = '1' else
         cur + 1 when inc = '1' else
-        cur; 
+        cur;
+
+output <= std_logic_vector(cur);        
+ 
 end arch;

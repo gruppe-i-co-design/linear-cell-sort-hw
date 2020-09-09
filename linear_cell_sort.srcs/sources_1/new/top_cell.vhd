@@ -26,10 +26,10 @@ generic(
 end top_cell;
 
 architecture arch of top_cell is
+
 signal cur, nxt : t_state;
 signal comp, load, data_mux : std_logic;
 signal reg_out, mux_out: std_logic_vector((DATA_LEN - 1) downto 0);
-
 
 signal mux_inputs : work.multiplexer_type.input_array(0 to 1, (DATA_LEN - 1) downto 0);
 
@@ -49,10 +49,10 @@ end process;
 process(cur, enable, clr, prev_cell_state, prev_cell_pushing, comp)
 begin
 
-nxt <= cur;
-load <= '0';
-data_mux <= '0';
-pushing <= '0';
+    nxt <= cur;
+    load <= '0';
+    data_mux <= '0';
+    pushing <= '0';
  
     case cur is
         when empty =>
@@ -94,7 +94,7 @@ mux : entity work.multiplexer
 generic map(DATA_LEN => DATA_LEN, MUX_BITS => 1)
 port map(inputs => mux_inputs, sel(0) => data_mux, output => mux_out);
 
-registery : entity work.reg 
+reg : entity work.reg 
 generic map(DATA_LEN => DATA_LEN)
 port map(clk => clk, rst => rst, load => load, data_in => mux_out, data_out => reg_out);
 
