@@ -4,10 +4,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity comparator_eq is
 generic(
-        DATA_LEN : integer
+        INPUT_SIZE : integer
         );
        
-port (  A, B: in std_logic_vector((DATA_LEN - 1) downto 0);
+port (  A, B: in std_logic_vector((INPUT_SIZE - 1) downto 0);
         comp: out std_logic
      );
 end comparator_eq;

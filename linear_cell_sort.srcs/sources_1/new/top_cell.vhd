@@ -38,10 +38,11 @@ process(clk, rst)
 begin 
     if rst = '1' then
         cur <= empty;
-    elsif rising_edge(clk) and clr = '1' then
-        cur <= empty;
     elsif rising_edge(clk) then
         cur <= nxt;
+        if clr = '1' then
+            cur <= empty;
+        end if;
     end if;
 end process; 
 
