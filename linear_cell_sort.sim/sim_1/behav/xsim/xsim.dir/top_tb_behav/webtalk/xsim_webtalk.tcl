@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Wed Sep  9 14:41:21 2020" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Wed Sep  9 14:45:39 2020" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.1 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2902540" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,11 +14,11 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "e989214c-960e-43f3-b98a-055a01344b8a" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "66b0f63a577442dcb06d85169df83cc9" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "62" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "64" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "unknown" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "unknown" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz" -context "user_environment"
-webtalk_add_data -client project -key cpu_speed -value "2679.910 MHz" -context "user_environment"
+webtalk_add_data -client project -key cpu_speed -value "2672.000 MHz" -context "user_environment"
 webtalk_add_data -client project -key total_processors -value "1" -context "user_environment"
 webtalk_add_data -client project -key system_ram -value "3.000 GB" -context "user_environment"
 webtalk_register_client -client xsim
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "611" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "77" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "1.67_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "251756_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 659630709 -regid "" -xml /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "1.63_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "251868_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2072192009 -regid "" -xml /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.sim/sim_1/behav/xsim/xsim.dir/top_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
