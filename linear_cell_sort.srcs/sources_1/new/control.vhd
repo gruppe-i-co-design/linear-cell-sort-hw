@@ -1,55 +1,57 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-library ieee;
-use ieee.std_logic_1164.all;
-entity control is
-	port (
-		clk, rst, enable, clr, comp : in std_logic;
-		in_cnt_inc, mux_cnt_inc, in_cnt_clr, mux_cnt_clr, cells_clr : out std_logic
+ENTITY control IS
+	PORT (
+		clk, rst, enable, clr, comp : IN STD_LOGIC;
+		in_cnt_inc, mux_cnt_inc, in_cnt_clr, mux_cnt_clr, cells_clr : OUT STD_LOGIC
 	);
-end control;
-architecture arch of control is
-type t_state is (idle, reading, outputting);
-signal cur, nxt: t_state;
-begin
--- state register
-process (clk, rst)
-begin
-	if (rst = '1') then
-		cur <= idle; -- initial state
-	elsif rising_edge(clk) then
-		cur <= nxt;
-	end if;
-end process;
--- next-state logic
-process (cur, comp, enable)
-begin
-	nxt <= cur; -- stay in current state by default
-	in_cnt_clr <= '0';
-    mux_cnt_clr <= '0';
-    cells_clr <= '0';
-    in_cnt_inc <= '0';
-    mux_cnt_inc <= '0';
+END control;
 
-	case cur is
-		when idle =>
-			if enable = '1' then 
-			    nxt <= reading;
-			end if;
-        when reading =>
-            if enable = '0' then 
-                nxt <= outputting;
-            else 
-                in_cnt_inc <= '1';
-			end if;
-        when outputting =>
-            if comp = '1' then 
-				in_cnt_clr <= '1';
-				mux_cnt_clr <= '1';
-				cells_clr <= '1';
-                nxt <= idle;
-            else 
-                mux_cnt_inc <= '1';
-			end if;
-	end case;
-end process;
-end arch;
+ARCHITECTURE arch OF control IS
+	TYPE t_state IS (idle, reading, outputting);
+	SIGNAL cur, nxt : t_state;
+BEGIN
+	-- state register
+	PROCESS (clk, rst)
+	BEGIN
+		IF (rst = '1') THEN
+			cur <= idle; -- initial state
+		ELSIF rising_edge(clk) THEN
+			cur <= nxt;
+		END IF;
+	END PROCESS;
+
+	-- next-state logic
+	PROCESS (cur, comp, enable)
+	BEGIN
+		nxt <= cur; -- stay in current state by default
+		in_cnt_clr <= '0';
+		mux_cnt_clr <= '0';
+		cells_clr <= '0';
+		in_cnt_inc <= '0';
+		mux_cnt_inc <= '0';
+
+		CASE cur IS
+			WHEN idle =>
+				IF enable = '1' THEN
+					nxt <= reading;
+				END IF;
+			WHEN reading =>
+				IF enable = '0' THEN
+					nxt <= outputting;
+				ELSE
+					in_cnt_inc <= '1';
+				END IF;
+			WHEN outputting =>
+				IF comp = '1' THEN
+					in_cnt_clr <= '1';
+					mux_cnt_clr <= '1';
+					cells_clr <= '1';
+					nxt <= idle;
+				ELSE
+					mux_cnt_inc <= '1';
+				END IF;
+		END CASE;
+	END PROCESS;
+END arch;

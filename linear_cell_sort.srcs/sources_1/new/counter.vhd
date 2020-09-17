@@ -1,34 +1,35 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
-entity counter is
-generic(
-        LOG_N : integer
-);
-Port ( 
-       clk, rst, clr, inc : in std_logic;
-       output : out std_logic_vector((LOG_N - 1) downto 0)
-  );
-end counter;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
-architecture arch of counter is
-signal cur, nxt : unsigned((LOG_N - 1) downto 0);
+ENTITY counter IS
+	GENERIC (
+		LOG_N : INTEGER
+	);
+	PORT (
+		clk, rst, clr, inc : IN STD_LOGIC;
+		output : OUT STD_LOGIC_VECTOR((LOG_N - 1) DOWNTO 0)
+	);
+END counter;
 
-begin
--- clk process
-PROCESS (clk, rst)
+ARCHITECTURE arch OF counter IS
+	SIGNAL cur, nxt : unsigned((LOG_N - 1) DOWNTO 0);
+
+BEGIN
+	-- clk process
+	PROCESS (clk, rst)
 	BEGIN
 		IF (rst = '1') THEN
 			cur <= (OTHERS => '0');
 		ELSIF rising_edge(clk) THEN
 			cur <= nxt;
 		END IF;
-END PROCESS;
+	END PROCESS;
 
-nxt <= (others => '0') when clr = '1' else
-        cur + 1 when inc = '1' else
-        cur;
+	nxt <= (OTHERS => '0') WHEN clr = '1' ELSE
+		cur + 1 WHEN inc = '1' ELSE
+		cur;
 
-output <= std_logic_vector(cur);        
- 
-end arch;
+	output <= STD_LOGIC_VECTOR(cur);
+
+END arch;

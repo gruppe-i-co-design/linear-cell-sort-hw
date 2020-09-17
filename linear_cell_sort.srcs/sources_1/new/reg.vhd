@@ -1,22 +1,22 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity reg is 
-generic(
-        DATA_LEN : integer
-        );
-port(
-     clk, rst: in std_logic;
-     load: in std_logic;
-     data_in: in std_logic_vector((DATA_LEN - 1) downto 0);
-     data_out: out std_logic_vector((DATA_LEN - 1) downto 0)
-     );
-end;
+ENTITY reg IS
+	GENERIC (
+		DATA_LEN : INTEGER
+	);
+	PORT (
+		clk, rst : IN STD_LOGIC;
+		load : IN STD_LOGIC;
+		data_in : IN STD_LOGIC_VECTOR((DATA_LEN - 1) DOWNTO 0);
+		data_out : OUT STD_LOGIC_VECTOR((DATA_LEN - 1) DOWNTO 0)
+	);
+END;
 
-architecture arch of reg is
-    
-begin
--- clk process
+ARCHITECTURE arch OF reg IS
+
+BEGIN
+	-- clk process
 	PROCESS (clk, rst)
 	BEGIN
 		IF (rst = '1') THEN
@@ -25,6 +25,4 @@ begin
 			data_out <= data_in;
 		END IF;
 	END PROCESS;
-	
-	
-end;
+END;

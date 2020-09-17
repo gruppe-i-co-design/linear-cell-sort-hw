@@ -1,33 +1,30 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
+PACKAGE multiplexer_type IS
+	TYPE input_array IS ARRAY(NATURAL RANGE <>, NATURAL RANGE <>) OF STD_LOGIC;
+END PACKAGE;
 
-package multiplexer_type is 
-type input_array is array(natural range <>, natural range <>) of std_logic;
-end package;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE work.multiplexer_type.ALL;
+USE ieee.numeric_std.ALL;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use work.multiplexer_type.all;
-use ieee.numeric_std.all;
+ENTITY multiplexer IS
+	GENERIC (
+		DATA_LEN : INTEGER;
+		MUX_BITS : INTEGER
+	);
+	PORT (
+		inputs : IN input_array(0 TO (2 ** MUX_BITS) - 1, (DATA_LEN - 1) DOWNTO 0);
+		sel : IN STD_LOGIC_VECTOR((MUX_BITS - 1) DOWNTO 0);
+		output : OUT STD_LOGIC_VECTOR((DATA_LEN - 1) DOWNTO 0)
+	);
+END;
 
-entity multiplexer is
-generic(
-        DATA_LEN : integer;
-        MUX_BITS : integer
-); 
-
-port (
-        inputs : in input_array(0 to (2 ** MUX_BITS) - 1 , (DATA_LEN - 1) downto 0);
-        sel : in std_logic_vector((MUX_BITS - 1) downto 0);
-        output: out std_logic_vector((DATA_LEN - 1) downto 0)
-    );
-end;
-
-architecture arch of multiplexer is
-begin
-    gen : for i in (DATA_LEN - 1) downto 0 generate
-        output(i) <= inputs(to_integer(unsigned(sel)), i);
-    end generate;
-
-end;
+ARCHITECTURE arch OF multiplexer IS
+BEGIN
+	gen : FOR i IN (DATA_LEN - 1) DOWNTO 0 GENERATE
+		output(i) <= inputs(to_integer(unsigned(sel)), i);
+	END GENERATE;
+END;

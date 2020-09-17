@@ -1,21 +1,21 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+ENTITY comparator_eq IS
+	GENERIC (
+		INPUT_SIZE : INTEGER
+	);
 
-entity comparator_eq is
-generic(
-        INPUT_SIZE : integer
-        );
-       
-port (  A, B: in std_logic_vector((INPUT_SIZE - 1) downto 0);
-        comp: out std_logic
-     );
-end comparator_eq;
+	PORT (
+		A, B : IN STD_LOGIC_VECTOR((INPUT_SIZE - 1) DOWNTO 0);
+		comp : OUT STD_LOGIC
+	);
+END comparator_eq;
 
-architecture arch of comparator_eq is
+ARCHITECTURE arch OF comparator_eq IS
 
-begin
-comp <= '1' when A = B else
-    '0';
+BEGIN
+	comp <= '1' WHEN A = B ELSE
+		'0';
 
-end arch;
+END arch;

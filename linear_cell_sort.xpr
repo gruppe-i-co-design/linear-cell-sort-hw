@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="/home/oruud/VProjects/linear-cell-sort-hw/linear_cell_sort.xpr">
+<Project Version="7" Minor="49" Path="/home/oruud/Dokumenter/usn/codesign/code/linear-cell-sort-hw/linear_cell_sort.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="66b0f63a577442dcb06d85169df83cc9"/>

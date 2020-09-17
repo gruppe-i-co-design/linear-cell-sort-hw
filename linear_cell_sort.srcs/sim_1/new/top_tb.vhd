@@ -1,70 +1,72 @@
-library ieee;
-use ieee.std_logic_1164.all;
-library work;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+LIBRARY WORK;
 
-entity top_tb is
-end top_tb;
+ENTITY top_tb IS
+END top_tb;
 
-architecture tb of top_tb is
+ARCHITECTURE tb OF top_tb IS
 
-    constant DATA_LEN : integer := 8;
+	CONSTANT DATA_LEN : INTEGER := 8;
 
-    signal clk, rst, enable, clr : std_logic;
-    signal data_in : std_logic_vector((DATA_LEN - 1) downto 0);
-    constant clk_period : time := 10 ns;
-    
-begin
-	uut : entity work.top
-	generic map(DATA_LEN => DATA_LEN, LOG_N => 4)
-    port map (clk => clk, 
-              rst => rst, 
-              clr => clr, 
-              enable => enable, 
-              data_in => data_in);
-              
-clk_process: process 
-   begin
-      clk <= '0';
-      wait for clk_period/2;
-      clk <= '1';
-      wait for clk_period/2;
-   end process;
-   
--- Stimuli process 
-   stim_proc: process
-      begin
-         rst <= '1';      
-         wait for clk_period*2;
-         rst <= '0';      
-         wait for clk_period;
-         enable <= '1';
-         data_in <= x"ff";
-         wait for clk_period;
-         data_in <= x"99";
-         wait for clk_period;
-         data_in <= x"77";
-         wait for clk_period;
-         data_in <= x"cc";
-         wait for clk_period;
-         data_in <= x"88";
-         wait for clk_period;
-         data_in <= x"aa";
-         wait for clk_period;
-         data_in <= x"11";
-         wait for clk_period;
-         data_in <= x"ee";
-         wait for clk_period;
-         data_in <= x"aa";
-         wait for clk_period;
-         data_in <= x"11";
-         wait for clk_period;
-         data_in <= x"99";
-         wait for clk_period;
-         data_in <= x"77";
-         wait for clk_period;
-         data_in <= x"dd";
-         wait for clk_period;
-         enable <= '0';
-         wait for clk_period*20;
-      end process ;
-end tb;
+	SIGNAL clk, rst, enable, clr : STD_LOGIC;
+	SIGNAL data_in : STD_LOGIC_VECTOR((DATA_LEN - 1) DOWNTO 0);
+	CONSTANT clk_period : TIME := 10 ns;
+
+BEGIN
+	uut : ENTITY work.top
+		GENERIC MAP(DATA_LEN => DATA_LEN, LOG_N => 4)
+		PORT MAP(
+			clk => clk,
+			rst => rst,
+			clr => clr,
+			enable => enable,
+			data_in => data_in
+		);
+
+	clk_process : PROCESS
+	BEGIN
+		clk <= '0';
+		WAIT FOR clk_period/2;
+		clk <= '1';
+		WAIT FOR clk_period/2;
+	END PROCESS;
+
+	-- Stimuli process 
+	stim_proc : PROCESS
+	BEGIN
+		rst <= '1';
+		WAIT FOR clk_period * 2;
+		rst <= '0';
+		WAIT FOR clk_period;
+		enable <= '1';
+		data_in <= x"ff";
+		WAIT FOR clk_period;
+		data_in <= x"99";
+		WAIT FOR clk_period;
+		data_in <= x"77";
+		WAIT FOR clk_period;
+		data_in <= x"cc";
+		WAIT FOR clk_period;
+		data_in <= x"88";
+		WAIT FOR clk_period;
+		data_in <= x"aa";
+		WAIT FOR clk_period;
+		data_in <= x"11";
+		WAIT FOR clk_period;
+		data_in <= x"ee";
+		WAIT FOR clk_period;
+		data_in <= x"aa";
+		WAIT FOR clk_period;
+		data_in <= x"11";
+		WAIT FOR clk_period;
+		data_in <= x"99";
+		WAIT FOR clk_period;
+		data_in <= x"77";
+		WAIT FOR clk_period;
+		data_in <= x"dd";
+		WAIT FOR clk_period;
+		enable <= '0';
+		WAIT FOR clk_period * 20;
+	END PROCESS;
+END;
